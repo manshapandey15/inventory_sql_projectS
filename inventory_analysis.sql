@@ -1,52 +1,7 @@
 -- Use your schema
 USE inventory_project;
 
--- Create the raw products table
-CREATE TABLE raw_zepto (
-    sku_id INT PRIMARY KEY,
-    category VARCHAR(100),
-    name VARCHAR(255),
-    mrp INT,
-    discountPercent DECIMAL(5,2),
-    availableQuantity INT,
-    discountedSellingPrice INT,
-    weightInGms INT,
-    outOfStock VARCHAR(10),
-    quantity INT
-);
-
--- Check if table was created
-SHOW TABLES;
-USE inventory_project;
-
--- Count total products
-SELECT COUNT(*) AS total_products FROM raw_zepto;
-
--- Preview the data
-SELECT * FROM raw_zepto LIMIT 10;
-
--- Check what categories you have
-SELECT DISTINCT category FROM raw_zepto;
-SELECT DISTINCT category FROM raw_zepto ORDER BY category;
--- Drop the old table
-DROP TABLE raw_zepto;
-
--- Create new table WITHOUT sku_id (let MySQL auto-generate it)
-CREATE TABLE raw_zepto (
-    id INT AUTO_INCREMENT PRIMARY KEY,  -- Auto-generated
-    category VARCHAR(100),
-    name VARCHAR(255),
-    mrp INT,
-    discountPercent DECIMAL(5,2),
-    availableQuantity INT,
-    discountedSellingPrice INT,
-    weightInGms INT,
-    outOfStock VARCHAR(10),
-    quantity INT
-);
-
-DROP TABLE raw_zepto;
-
+-- create table
 CREATE TABLE raw_zepto (
     category VARCHAR(100),
     name VARCHAR(255),
@@ -105,7 +60,7 @@ WHERE is_out_of_stock = 0
 ORDER BY discount_percent DESC
 LIMIT 10;
 
--- QUERY TWO
+-- QUERY 2
 
 SELECT 
     category,
